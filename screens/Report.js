@@ -1,9 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import  React, {useState, createContext, useContext} from 'react';
-import { StyleSheet, Text, View, Image, Modal,  } from 'react-native';
-import { RectButton, ScrollView, TouchableOpacity, TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Image,TouchableOpacity, Modal,  } from 'react-native';
+import { RectButton, ScrollView,  TextInput } from 'react-native-gesture-handler';
 
-import {MakeReport} from '../components/MakeReport'
+import MakeReport from '../components/MakeReport'
 
 export const ReportModalContext = createContext()
 
