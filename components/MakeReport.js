@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import  React, {useState, useContext} from 'react';
-import { StyleSheet, Text, View, Image,Button } from 'react-native';
-import { RectButton, ScrollView, TouchableOpacity, TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, TouchableOpacity, Image,Button } from 'react-native';
+import { RectButton, ScrollView,  TextInput } from 'react-native-gesture-handler';
 
 import {ReportModalContext} from '../screens/Report'
 

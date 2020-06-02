@@ -3,9 +3,9 @@ import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image, Modal,TouchableOpacity,  FlatList} from 'react-native';
 import { RectButton, ScrollView, TextInput } from 'react-native-gesture-handler';
 
-import FirstCountryPickerView from './FirstCountryPickerModal'
-import SecondCountryPickerView from './SecondCountryPickerModal'
-import countries from "./src/data/countries.json";
+import FirstCountryPickerView from '../components/FirstCountryPickerModal'
+import SecondCountryPickerView from '../components/SecondCountryPickerModal'
+import countries from "../components/src/data/countries.json";
 
 export const FirstCountryPickerModalContext = createContext()
 export const SecondCountryPickerModalContext = createContext()
@@ -90,7 +90,7 @@ export default function PersonalDetails() {
               </TouchableOpacity>
              <FirstCountryPickerModal/>
             </View>
-            <View style={{flex:.5 ,height:120, width:180, borderWidth:2, borderRadius:20, marginLeft:10,
+            <View style={{flex:.5 ,height:120, width:180, borderWidth:1.5, borderRadius:20, marginLeft:10,
               alignItems:'center', justifyContent:'center'}}>
               <TouchableOpacity
               onPress={ ()=>setSecondCountryModal(true)}

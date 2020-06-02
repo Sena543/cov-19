@@ -1,137 +1,95 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Entypo } from '@expo/vector-icons';
 import  React, {useState, createContext, useContext} from 'react';
-import { StyleSheet, Text, View, Image, Modal,TouchableOpacity,  FlatList} from 'react-native';
-import { RectButton, ScrollView, TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Image, TouchableOpacity,  FlatList, Modal} from 'react-native';
 
-import FirstCountryPickerView from '../components/FirstCountryPickerModal'
-import SecondCountryPickerView from '../components/SecondCountryPickerModal'
-import countries from "../components/src/data/countries.json";
+import Assessment from '../components/SelfAssessment.js';
+// import TestingCenters from '../components/TestingCenters';
+// import PersonalDetails from '../components/PersonalDetails';
+import FAQs from '../components/FAQs';
+// import Share from '../components/Share';
+// import Privacy from '../components/PrivacyPolicy';
+// import Audio from '../components/Audio';
 
-export const FirstCountryPickerModalContext = createContext()
-export const SecondCountryPickerModalContext = createContext()
+// import FirstCountryPickerModal from '../components/FirstCountryPickerModal';
+// import SecondCountryPickerModal from '../components/SecondCountryPickerModal';
 
-export default function PersonalDetails() {
 
-  const [firstCountryModal, setFirstCountryModal] = useState(false);
-  const [secondCountryModal, setSecondCountryModal] = useState(false);
-  const [age, setAge] = useState();  
-  const [healthNumber, setHealthNmber] = useState();
-  const [selectFirstCountry, setSelectFirstCountry] = useState({name:'Ghana', code:'GH'});
-  const [selectSecondCountry, setSelectSecondCountry] = useState({name:'United Kingdom', code:'GB'});
-  
+//import countries from "../components/src/data/countries.json";
 
-  const FirstCountryPickerModal = ()=>{
-   return(
-   <Modal
-   animationType="slide"
-   visible={firstCountryModal}
-   >
-     <FirstCountryPickerModalContext.Provider value={{firstCountryModal, setFirstCountryModal, setSelectFirstCountry}}>
-        <FirstCountryPickerView/>
-      </FirstCountryPickerModalContext.Provider>    
-   </Modal>
-)
-  }
+export const FirstCountryPickerModalContext = createContext();
+export const SecondCountryPickerModalContext = createContext();
+export const SettingsModalContext = createContext();
 
-  const SecondCountryPickerModal = ()=>{
-    return(
+export default function Settings() {
+
+  const [modalView, setModalView]= useState(false)
+
+
+  const settingsData = [
+   {title:'Self Assessment', message:'Ascertain your risk of covid 19 using our screening tool', component:Assessment},
+   {title:'FAQs', message:'Get answers to frequently asked questions', component:FAQs },
+  //  {title:'Testing Centers', message:'Find testing centers near you', component:TestingCenters},
+  //  {title:'Personal Details', message:'View and update your personal details', component:PersonalDetails},
+  //  {title:'Audio', message:'Listen to audio', component:Audio},
+  //  {title:'Privacy Policy', message:'View our privacy policy', component:Privacy},
+  //  {title:'Share', message:'Share this app with family and friends', component:Share},
+ ]
+
+
+ const RenderModal = ({Component})=>{
+  return(
     <Modal
-    animationType="slide"
-    visible={secondCountryModal}
+    animated='slide'
+    visible={modalView}
     >
-      <SecondCountryPickerModalContext.Provider value={{secondCountryModal, setSecondCountryModal, setSelectSecondCountry}}>
-         <SecondCountryPickerView/>
-       </SecondCountryPickerModalContext.Provider>    
+      <SettingsModalContext.Provider value={{modalView, setModalView}}>
+        {Component}
+      </SettingsModalContext.Provider>
     </Modal>
- )
-   }
-
- 
-
-
-  return (
-    <ScrollView style={{flex:1, backgroundColor:'#ffffff', borderRadius:30, marginLeft:5}}>
-      <View style={{flex:.2}}>
-        <View style={{flex:1, margin:20, flexDirection:'row', justifyContent:'space-between', borderBottomWidth:.2}}>
-          <Text style={{fontWeight:'bold', fontSize:25}}>Personal Details</Text>
-          <TouchableOpacity
-          onPress={()=>  setFirstCountryModal(!firstCountryModal)}
-          >
-            <Ionicons name='ios-close' size={30}/>
-          </TouchableOpacity>
-        </View>
-       </View>
-       <View style={{flex:1.5}}>
-        <View style={{marginLeft:10}}>
-          <Text style={{fontWeight:'bold', fontSize:15}}>Personal Details</Text>
-        </View>
-        <View style={{margin:20}}>
-          <Text style={{fontWeight:'bold', fontSize:15, marginBottom:10}}>Enter Age</Text>
-          <TextInput
-          onChange={ (age)=> setAge(age)}
-          keyboardType="number-pad"
-          style={{borderWidth:.4,  marginRight:20, height:50}}
-          />
-        </View>
-        <View style={{flex:1,margin:20}}>
-          <Text style={{fontWeight:'bold', fontSize:15}}>Travel History</Text>
-          <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', margin:10}}>
-            <View style={{flex:.5,height:120, width:180, borderWidth:1.5, marginRight:10,
-              borderRadius:20,alignItems:'center', justifyContent:'center'}}>
-              <TouchableOpacity
-              onPress={ ()=> {setFirstCountryModal(true)}}
-              >
-               <View style={{height:85, width:85}}>
-                 <Image source={{uri:`https://www.countryflags.io/${selectFirstCountry.code}/shiny/64.png`}} style={{height:85, width:85}}/>
-               </View>
-               <View style={{alignItems:'center', justifyContent:'center'}}>
-                <Text>{selectFirstCountry.name}</Text>
-               </View>
-              </TouchableOpacity>
-             <FirstCountryPickerModal/>
-            </View>
-            <View style={{flex:.5 ,height:120, width:180, borderWidth:1.5, borderRadius:20, marginLeft:10,
-              alignItems:'center', justifyContent:'center'}}>
-              <TouchableOpacity
-              onPress={ ()=>setSecondCountryModal(true)}
-              >
-              <View style={{height:85, width:85}}>
-                 <Image source={{uri:`https://www.countryflags.io/${selectSecondCountry.code}/shiny/64.png`}} style={{height:85, width:85}}/>
-               </View>
-               <View style={{alignItems:'center', justifyContent:'center'}}>
-                <Text>{selectSecondCountry.name}</Text>
-               </View>
-                
-              </TouchableOpacity>
-              <SecondCountryPickerModal/>
-            </View>
-          </View>
-        </View>
-        <View style={{margin:20, flex:1}}>
-          <Text style={{fontWeight:'bold', fontSize:15, marginBottom:5}}>Medical Professional Information</Text>
-          <Text style={{ marginBottom:10}}>Applicable if Health Professional</Text>
-          <Text style={{marginTop:5}}>Health License Number</Text>
-          <TextInput
-          onChange={ (healthNumber)=> setHealthNmber(healthNumber)}
-          keyboardType="number-pad"
-          
-          style={{borderWidth:.4,  marginRight:20, height:50}}
-          />
-      </View>
-    </View>
-      <View>
-        <TouchableOpacity
-        onPress={ ()=> alert("Profile Updated")}
-        >
-          <View style={{backgroundColor:'black', alignItems:'center', justifyContent:'center',
-           height:60, margin:10}}>
-            <Text style={{color:'#ffffff'}}>Update Profile</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
-  );
+  )
 }
 
 
+  const RenderList = ({title, message, Comp})=>{
 
+  return(
+  <View style={{flex:1, borderBottomWidth:.4, height:95,flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
+         <TouchableOpacity
+         onPress={()=>{
+           setModalView(true);
+         }}
+         >
+         <View style={{flex:1,margin:30, marginBottom:10}}>
+           <View  >
+            <Text style={{fontSize:20,fontWeight:'bold'}}>{title}</Text>
+           </View>
+          <View>
+            <Text >{message}</Text>
+          </View>
+         </View>
+         <View style={{flex:1, justifyContent:'flex-end', marginLeft:20, flexDirection:'row', alignItems:'center', marginBottom:30, marginLeft:40}}>
+            <Entypo name='chevron-right'/>
+          </View>
+         </TouchableOpacity>
+         <RenderModal Component={<Comp/>}/>
+       </View>
+   )
+ }
+
+
+ 
+   return (
+     <View style={{flex:1, backgroundColor:'#ffffff'}}>
+       <View style={{flex:1, justifyContent:'center', height:100, }}>
+         <FlatList
+         data={settingsData}
+         renderItem={ ({ item })=> <RenderList title={item.title} message={item.message} Comp={item.component}/>}
+         keyExtractor={item=>item.title}
+         />
+         </View>
+     </View>
+   );
+}
+
+// <Template Component={renderScreens}/>
+//

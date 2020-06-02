@@ -1,37 +1,31 @@
 import { Ionicons } from '@expo/vector-icons';
 import  React, {useState, createContext, useContext} from 'react';
-import { StyleSheet, Text, View, Image, Modal,  } from 'react-native';
-import { RectButton, ScrollView, TouchableOpacity, TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Image, Modal, TouchableOpacity  } from 'react-native';
+import { RectButton, ScrollView,  TextInput } from 'react-native-gesture-handler';
 
-import {MakeReport} from '../components/MakeReport'
+import {MakeReport} from '../components/MakeReport';
 
-export const AssessmentModalContext = createContext()
+export const AssessmentModalContext = createContext();
+import {SettingsModalContext} from '../screens/Settings';
 
 export default function Assessment() {
 
-  const [showReport, setShowReport] = useState(false)
-
-  
-
-  const AssessmentModal = ()=>{
-   return(
-   <Modal
-   animationType="slide"
-   visible={showReport}
-   >
-      <AssessmentModalContext.Provider value={{showReport, setShowReport}}>
-        <MakeReport/>
-      </AssessmentModalContext.Provider>
-   </Modal>
-)
-  }
+  const {modalView, setModalView} = useContext(SettingsModalContext);
+  const [showReport, setShowReport] = useState(false);
 
 
   return (
-    <View style={{flex:1, backgroundColor:'#ffffff'}}>
-      <View style={{flex:.3,marginLeft:30}}>
-        <Text style={{fontWeight:'bold', fontSize:30}}>Self Assessment</Text>
-      </View>
+    <View style={{flex:1, backgroundColor:'#ffffff', borderRadius:20}}>
+       <View style={{flex:.2}}>
+        <View style={{flex:1, margin:20, flexDirection:'row', justifyContent:'space-between', borderBottomWidth:.2}}>
+          <Text style={{fontWeight:'bold', fontSize:25}}>Self Assessment</Text>
+          <TouchableOpacity
+          onPress={()=>  setModalView(!modalView)}
+          >
+            <Ionicons name='ios-close' size={30}/>
+          </TouchableOpacity>
+        </View>
+       </View>
       <View style={{flex:1}}>
         <View style={{margin:30}}>
           <Text style={{fontWeight:'bold', fontSize:30}}>Getting Started!</Text>
