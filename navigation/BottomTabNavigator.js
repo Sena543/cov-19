@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import Vitals from '../screens/Vitals';
 import Settings from '../screens/Settings';
 import Report from '../screens/Report';
+import Dev from '../screens/Dev'
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -39,7 +40,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={Vitals}
         options={{
           title: 'Vitals',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-medkit" />,
         }}
       />
        <BottomTab.Screen
@@ -47,6 +48,14 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={Settings}
         options={{
           title: 'Settings',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-settings" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Dev"
+        component={Dev}
+        options={{
+          title: 'Dev',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-settings" />,
         }}
       />
@@ -66,5 +75,7 @@ function getHeaderTitle(route) {
       return 'Vitals';
     case 'Settings':
       return 'Settings';
+    case 'Dev':
+      return 'Dev';  
   }
 }

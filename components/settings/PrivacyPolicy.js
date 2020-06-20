@@ -3,11 +3,11 @@ import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image, Modal,  } from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity, TextInput } from 'react-native-gesture-handler';
 
-import {MakeReport} from '../components/MakeReport'
+//import {MakeReport} from '../components/MakeReport'
 
 export const FAQModalContext = createContext()
 
-export default function Share() {
+export default function Privacy() {
 
   const [showReport, setShowReport] = useState(false)
 

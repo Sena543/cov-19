@@ -1,17 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import  React, {useState, createContext, useContext} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Modal,  } from 'react-native';
-import { RectButton, ScrollView,  TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Image, Modal,  } from 'react-native';
+import { RectButton, ScrollView, TouchableOpacity, TextInput } from 'react-native-gesture-handler';
 
-import {MakeReport} from '../components/MakeReport';
-import {SettingsModalContext} from '../screens/Settings';
-
+//import {MakeReport} from '../components/MakeReport'
 
 export const FAQModalContext = createContext()
 
-export default function FAQ() {
+export default function Audio() {
 
-  const {modalView, setModalView} = useContext(SettingsModalContext);
   const [showReport, setShowReport] = useState(false)
 
   
@@ -35,9 +32,7 @@ export default function FAQ() {
        <View style={{flex:.5}}>
         <View style={{flex:.25, margin:20, flexDirection:'row', justifyContent:'space-between',}}>
           <Text style={{fontWeight:'bold', fontSize:25}}>FAQ</Text>
-          <TouchableOpacity
-           onPress={()=>  setModalView(!modalView)}
-          >
+          <TouchableOpacity>
             <Ionicons name='ios-close' size={30}/>
           </TouchableOpacity>
         </View>

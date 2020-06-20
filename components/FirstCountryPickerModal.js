@@ -3,7 +3,7 @@ import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image, Modal,TouchableOpacity,  FlatList} from 'react-native';
 import { RectButton, ScrollView, TextInput } from 'react-native-gesture-handler';
 
-import {FirstCountryPickerModalContext} from '../screens/Settings'
+import FirstCountryPickerModalContext from '../screens/Settings'
 import countries from "./src/data/countries.json";
 
 
@@ -61,10 +61,3 @@ export default function FirstCountryPickerView() {
         </View>
   );
 }
- 
-
- 
-/**
- 
-  
- */

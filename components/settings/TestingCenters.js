@@ -3,13 +3,15 @@ import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image, Modal,  FlatList} from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity, TextInput } from 'react-native-gesture-handler';
 
-import {MakeReport} from '../components/MakeReport'
+//import {MakeReport} from '../MakeReport'
+import {SettingsModalContext} from '../../screens/Settings';
 
 export const TestingModalContext = createContext()
 
 export default function Testing() {
 
   const [showReport, setShowReport] = useState(false);
+  const {modalView, setModalView} = useContext(SettingsModalContext);
   
   const locationData = [
     {centername:'ani-fori medical institute', date:'Tuesday, Apr 14 2020', city:'Accra, Ghana'},
@@ -18,18 +20,18 @@ export default function Testing() {
     {centername:'Atomic Hospital', date:'Sunday, Apr 12 2020', city:'Accra, Ghana'},
   ]
 
-  const TestingModal = ()=>{
-   return(
-   <Modal
-   animationType="slide"
-   visible={showReport}
-   >
-      <TestingModalContext.Provider value={{showReport, setShowReport}}>
-        <MakeReport/>
-      </TestingModalContext.Provider>
-   </Modal>
-)
-  }
+//   const TestingModal = ()=>{
+//    return(
+//    <Modal
+//    animationType="slide"
+//    visible={showReport}
+//    >
+//       <TestingModalContext.Provider value={{showReport, setShowReport}}>
+//         <MakeReport/>
+//       </TestingModalContext.Provider>
+//    </Modal>
+// )
+//   }
 
   const RenderLocations = ({centername, city})=>{
     return(
@@ -56,7 +58,9 @@ export default function Testing() {
        <View style={{flex:.2}}>
         <View style={{flex:1, margin:20, flexDirection:'row', justifyContent:'space-between', borderBottomWidth:.2}}>
           <Text style={{fontWeight:'bold', fontSize:25}}>Testing Centers</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+           onPress={()=>  setModalView(!modalView)}
+          >
             <Ionicons name='ios-close' size={30}/>
           </TouchableOpacity>
         </View>
@@ -69,7 +73,6 @@ export default function Testing() {
            keyExtractor={ item=> item.centername}
            />
        </View>
-       
     </View>
   );
 }

@@ -2,16 +2,16 @@ import { Ionicons, Entypo } from '@expo/vector-icons';
 import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity,  FlatList, Modal} from 'react-native';
 
-import Assessment from '../components/SelfAssessment.js';
-// import TestingCenters from '../components/TestingCenters';
-// import PersonalDetails from '../components/PersonalDetails';
-import FAQs from '../components/FAQs';
-// import Share from '../components/Share';
-// import Privacy from '../components/PrivacyPolicy';
-// import Audio from '../components/Audio';
+import Assessment from '../components/settings/SelfAssessment.js';
+import TestingCenters from '../components/settings/TestingCenters';
+import PersonalDetails from '../components/settings/PersonalDetails';
+import FAQs from '../components/settings/FAQs';
+import Share from '../components/settings/Share';
+import Privacy from '../components/settings/PrivacyPolicy';
+import Audio from '../components/settings/Audio';
 
-// import FirstCountryPickerModal from '../components/FirstCountryPickerModal';
-// import SecondCountryPickerModal from '../components/SecondCountryPickerModal';
+import FirstCountryPickerModal from '../components/FirstCountryPickerModal';
+import SecondCountryPickerModal from '../components/SecondCountryPickerModal';
 
 
 //import countries from "../components/src/data/countries.json";
@@ -22,19 +22,18 @@ export const SettingsModalContext = createContext();
 
 export default function Settings() {
 
-  const [modalView, setModalView]= useState(false)
-
+  const [modalView, setModalView]= useState(false);
+  const [Component, setComponent] = useState();
 
   const settingsData = [
-   {title:'Self Assessment', message:'Ascertain your risk of covid 19 using our screening tool', component:Assessment},
-   {title:'FAQs', message:'Get answers to frequently asked questions', component:FAQs },
-  //  {title:'Testing Centers', message:'Find testing centers near you', component:TestingCenters},
-  //  {title:'Personal Details', message:'View and update your personal details', component:PersonalDetails},
-  //  {title:'Audio', message:'Listen to audio', component:Audio},
-  //  {title:'Privacy Policy', message:'View our privacy policy', component:Privacy},
-  //  {title:'Share', message:'Share this app with family and friends', component:Share},
- ]
-
+   {title:'Self Assessment', message:'Ascertain your risk of covid 19 using our screening tool', component:<Assessment/>},
+   {title:'FAQs', message:'Get answers to frequently asked questions', component:<FAQs/> },
+   {title:'Testing Centers', message:'Find testing centers near you', component:<TestingCenters/>},
+   {title:'Personal Details', message:'View and update your personal details', component:<PersonalDetails/>},
+   {title:'Audio', message:'Listen to audio', component:<Audio/>},
+   {title:'Privacy Policy', message:'View our privacy policy', component:<Privacy/>},
+   {title:'Share', message:'Share this app with family and friends', component:<Share/>},
+ ];
 
  const RenderModal = ({Component})=>{
   return(
@@ -46,17 +45,17 @@ export default function Settings() {
         {Component}
       </SettingsModalContext.Provider>
     </Modal>
-  )
+  );
 }
 
 
   const RenderList = ({title, message, Comp})=>{
-
   return(
   <View style={{flex:1, borderBottomWidth:.4, height:95,flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
          <TouchableOpacity
          onPress={()=>{
            setModalView(true);
+           setComponent(Comp);
          }}
          >
          <View style={{flex:1,margin:30, marginBottom:10}}>
@@ -71,9 +70,8 @@ export default function Settings() {
             <Entypo name='chevron-right'/>
           </View>
          </TouchableOpacity>
-         <RenderModal Component={<Comp/>}/>
        </View>
-   )
+   );
  }
 
 
@@ -87,6 +85,7 @@ export default function Settings() {
          keyExtractor={item=>item.title}
          />
          </View>
+         <RenderModal Component={Component}/>
      </View>
    );
 }

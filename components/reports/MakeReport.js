@@ -3,7 +3,7 @@ import  React, {useState, useContext} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image,Button } from 'react-native';
 import { RectButton, ScrollView,  TextInput } from 'react-native-gesture-handler';
 
-import {ReportModalContext} from '../screens/Report'
+import {ReportModalContext} from '../../screens/Report'
 
 export default function MakeReport(){
 

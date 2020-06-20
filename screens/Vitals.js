@@ -3,13 +3,16 @@ import * as WebBrowser from 'expo-web-browser';
 import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Modal } from 'react-native';
 import { RectButton, ScrollView, TextInput, FlatList } from 'react-native-gesture-handler';
+import {  gql } from "apollo-boost";
+import { graphql } from "react-apollo";
 
-import LogSysmptoms from '../components/LogSymptoms'
+import LogSysmptoms from '../components/vitals/LogSymptoms'
 export const SymptomContext = createContext()
 
 export default function Vitals() {
 
   const [vitals,setLogVitals] = useState(false);
+  const [vitalsData, setVitalsData] = useState([]);
 
   const SysmptomModal = ()=>{
     return(
@@ -22,6 +25,10 @@ export default function Vitals() {
        </SymptomContext.Provider>
       </Modal>
     )
+  }
+
+  if(vitalsData.length>1){
+    console.log('Vitals data')
   }
 
   return (

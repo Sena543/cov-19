@@ -3,9 +3,9 @@ import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image, Modal,TouchableOpacity,  FlatList} from 'react-native';
 import { RectButton, ScrollView, TextInput } from 'react-native-gesture-handler';
 
-import FirstCountryPickerView from '../components/FirstCountryPickerModal'
-import SecondCountryPickerView from '../components/SecondCountryPickerModal'
-import countries from "../components/src/data/countries.json";
+import FirstCountryPickerView from '../FirstCountryPickerModal'
+import SecondCountryPickerView from '../SecondCountryPickerModal'
+import countries from "../src/data/countries.json";
 
 export const FirstCountryPickerModalContext = createContext()
 export const SecondCountryPickerModalContext = createContext()

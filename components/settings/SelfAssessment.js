@@ -3,10 +3,10 @@ import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image, Modal, TouchableOpacity  } from 'react-native';
 import { RectButton, ScrollView,  TextInput } from 'react-native-gesture-handler';
 
-import {MakeReport} from '../components/MakeReport';
+//import {MakeReport} from '../MakeReport';
 
-export const AssessmentModalContext = createContext();
-import {SettingsModalContext} from '../screens/Settings';
+export const  AssessmentModalContext = createContext();
+import {SettingsModalContext} from '../../screens/Settings';
 
 export default function Assessment() {
 
@@ -20,7 +20,7 @@ export default function Assessment() {
         <View style={{flex:1, margin:20, flexDirection:'row', justifyContent:'space-between', borderBottomWidth:.2}}>
           <Text style={{fontWeight:'bold', fontSize:25}}>Self Assessment</Text>
           <TouchableOpacity
-          onPress={()=>  setModalView(!modalView)}
+            onPress={()=>  setModalView(!modalView)}
           >
             <Ionicons name='ios-close' size={30}/>
           </TouchableOpacity>

@@ -4,7 +4,7 @@ import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {FlatList } from 'react-native-gesture-handler';
 
-import { SymptomContext } from '../screens/Vitals'
+import { SymptomContext } from '../../screens/Vitals'
 
 export default function LogSymptoms() {
 
@@ -40,9 +40,6 @@ export default function LogSymptoms() {
     {name:"Aches and Pains"},
     {name:"Shortness of Breath"},
   ]
-
-  
-
 
   const NumberOptions = ({num, des, name})=>{
 

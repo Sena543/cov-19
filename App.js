@@ -6,6 +6,17 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import { ApolloProvider} from '@apollo/react-hooks';
+import ApolloClient,{InMemoryCache} from 'apollo-boost';
+
+
+
+const client = new ApolloClient({
+  uri: 'https://signalc.herokuapp.com/graphql',
+  cache: new InMemoryCache(),
+});
+
+
 
 const Stack = createStackNavigator();
 
