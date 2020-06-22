@@ -3,13 +3,14 @@ import  React, {useState, createContext, useContext} from 'react';
 import { StyleSheet, Text, View, Image,TouchableOpacity, Modal,  } from 'react-native';
 import { RectButton, ScrollView,  TextInput } from 'react-native-gesture-handler';
 
-import {MakeReport} from '../components/reports/MakeReport'
+import MakeReport from '../components/reports/MakeReport'
 
 export const ReportModalContext = createContext()
 
 export default function Report() {
 
-  const [showReport, setShowReport] = useState(false)
+  const [showReport, setShowReport] = useState(false);
+  const [loggedReports, setLoggedReports] = useState([]);
 
   
 
@@ -42,13 +43,14 @@ export default function Report() {
         <View style={{borderWidth:1, height:50, width:140, alignItems:'center', justifyContent:'center', borderStyle: 'dashed',}}>
           <Text> Make case report </Text>
         </View>
-        <ReportModal/>
       </TouchableOpacity>
+      <ReportModal/>
     </View>
 </View>
   );
 }
  
+
 
 /**
  <View style={{flex:1, alignItems:'center', backgroundColor:'#ffffff'}}>

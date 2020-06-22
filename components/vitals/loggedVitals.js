@@ -3,7 +3,7 @@ import {View, Text} from 'react-native'
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
 
 
-export default function DevScreen(){
+export default function LoggedVitals(){
 
 
     const dataTop = [
@@ -12,9 +12,6 @@ export default function DevScreen(){
         {id:'3',Topname:'Fever' ,data:2, topDescription:'Mild', Topcolor:'#46c2f2', Bottomname:'Sore Throat' ,data:1, Bottomcolor:'#cf5df5',},
     ]
 
-    const dataBottom = [
-        {'Dry Cough':1}
-    ]
 
     const RenderVitalsData = ({item})=>{
         return(

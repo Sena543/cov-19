@@ -25,7 +25,7 @@ export default function LogSymptoms() {
   }
 
   const numbers = [
-    {id:"0", type:"None"},
+    {id:"0", type:"None",},
     {id:"1", type:"Mild"},
     {id:"2", type:"Mid"},
     {id:"3", type:"Semi"},
@@ -49,17 +49,17 @@ export default function LogSymptoms() {
     }
 
     return(
-      <View>
+      <View style={{marginLeft:15}}>
         <View style={{backgroundColor:'#31546b', height:50, width:50, borderRadius:100, justifyContent:'center', alignItems:'center', marginLeft:6}}>
           <TouchableOpacity
           onPress={ handlePress}
           >
-            <View style={{backgroundColor:bgColor, height:47, width:47, borderRadius:50, justifyContent:'center' ,alignItems:'center'}}>
+            <View style={{backgroundColor:bgColor,  height:47, width:47, borderRadius:50, justifyContent:'center' ,alignItems:'center'}}>
               <Text style={{fontSize:25, color:'#000000'}}>{num}</Text>
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{marginLeft:15, marginTop:8}}>
+        <View style={{marginLeft:20, marginTop:8}}>
           <Text>{des}</Text>
         </View>
       </View>
